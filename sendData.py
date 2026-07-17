@@ -15,10 +15,10 @@ import mysql.connector
 
 # Connect with sql 
 connection = mysql.connector.connect(
-    host='localhost', 
-    user='root', 
-    password='Anupam@2002', 
-    database='secure'
+    host=os.getenv("DB_HOST"), 
+    user=os.getenv("DB_USER"), 
+    password=os.getenv("DB_PASSWORD"), 
+    database=os.getenv("DB_NAME")
 );
 
 cursor = connection.cursor();
@@ -82,11 +82,11 @@ for row in sheet.iter_rows(min_row=10, max_col=17, values_only=True):
 # Commit once after all inserts
 connection.commit()
 
-# import tkinter as tk
-# from tkinter import messagebox
+import tkinter as tk
+from tkinter import messagebox
 
-# root = tk.Tk()
-# root.withdraw()  # Hide the main window
+root = tk.Tk()
+root.withdraw()  # Hide the main window
 
-# messagebox.showinfo("Python", "Hello World!\nPython script executed successfully.")
+messagebox.showinfo("Done", "Data Transfered Successfully")
 
